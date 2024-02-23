@@ -18,7 +18,7 @@ if (!isset($_SESSION['pengguna_type'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link href="login_lol.png" rel="icon">
+  <link href="img/logo/logo.png" rel="icon">
   <title>Surat - Dashboard</title>
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -37,6 +37,7 @@ if (!isset($_SESSION['pengguna_type'])) {
           <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
+          <marquee style="color: white; font-size: 20px;">Sistem Surat Tugas</marquee>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
@@ -83,11 +84,11 @@ if (!isset($_SESSION['pengguna_type'])) {
                   <div class="row align-items-center">
                     <div class="col mr-2">
                       <?php 
-                      $sm = mysqli_query($koneksi, "SELECT count(*) as surat_tugas FROM surat_tugas");
+                      $sm = mysqli_query($koneksi, "SELECT count(*) as jumlah_surat_tugas FROM surat_tugas");
                       $rsm = mysqli_fetch_assoc($sm);
                       ?>
                       <div class="text-xs font-weight-bold text-uppercase mb-1">Surat Tugas</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $rsm['surat_tugas']; ?></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $rsm['jumlah_surat_tugas']; ?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-envelope fa-2x text-primary"></i>
@@ -115,7 +116,12 @@ if (!isset($_SESSION['pengguna_type'])) {
                   </div>
                 </div>
               </div>
+                </div>
+              </div>
             </div>
+          </div>
+          <!--Row-->
+
           <!-- Modal Logout -->
           <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
             aria-hidden="true">
@@ -158,6 +164,7 @@ if (!isset($_SESSION['pengguna_type'])) {
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
+
 
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

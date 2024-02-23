@@ -86,7 +86,7 @@ if (!isset($_SESSION['pengguna_type'])) {
                   <h6 class="m-0 font-weight-bold text-primary">Data Surat Tugas</h6>
                   <div class="d-grid gap-2 d-md-block">
                   <a class="btn btn-sm btn-primary" href="" data-toggle="modal" data-target="#myModal"><i class="fas fa fa-plus"></i> Tambah Data</a>
-                  <button class="btn btn-success mb-3" id="exportExcel"><i class="fas fa-file-excel"></i> Ekspor ke Excel</button>
+                  <a class="btn btn-sm btn-success" href="cetak_semua.php?tanggal=<?php echo $tanggal; ?>&status=<?php echo $status; ?>" target="_blank">Cetak Semua</a><br><br>
                     </div>
                 </div>
                 <div class="table-responsive p-3">
@@ -126,7 +126,7 @@ $result = mysqli_query($koneksi, $data);
             <td><?php echo $row['jam_pulang']; ?></td>
             <td><?php echo $row['menugaskan']; ?></td>
             <td>
-        <a href="generate_pdf.php" class="btn btn-primary">Unduh PDF</a>
+        <button data-id="<?php echo $row['id']; ?>" class="btn btn-primary">Unduh PDF</button>
 <td>
            <a class="btn btn-sm btn-warning" href="" data-toggle="modal" data-target="#myModaledit<?php echo $row['id']; ?>"><i class="fas fa fa-edit"></i></a><br><br>
                   <button class="btn btn-sm btn-danger deleteBtn" data-id="<?php echo $row['id']; ?>"><i class="fas fa fa-trash"></i></button>
@@ -343,19 +343,6 @@ $result = mysqli_query($koneksi, $data);
             }
         });
     });
-  </script>
-        <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
-    <script>
-      $(document).ready(function() {
-        $('#exportExcel').click(function() {
-          var table = document.getElementById('dataTable');
-          var wb = XLSX.utils.table_to_book(table, {
-            sheet: "SheetJS"
-          });
-          XLSX.writeFile(wb, 'data_surat_tugas.xlsx');
-        });
-      });
-    </script>
 </body>
 
 </html>

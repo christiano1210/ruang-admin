@@ -164,9 +164,7 @@ if (!isset($_SESSION['pengguna_type'])) {
                                   <select class="form-control" name="akses">
                                     <option selected disabled>Pilih Hak Akses</option>
                                     <option value="Admin">Admin</option>
-                                    <option value="Petugas">Petugas</option>
-                                    <option value="Pimpinan">Pimpinan</option>
-                                    <option value="Sekretaris">Sekretaris</option>
+                                    <option value="User">User</option>
                                   </select>
                                 </div>
                               </div>
