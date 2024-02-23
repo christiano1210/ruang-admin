@@ -1,0 +1,39 @@
+<script>
+    const addButton = document.getElementById("addButton");
+
+    const appendAlert = (message, type) => {
+        const wrapper = document.createElement("div");
+        wrapper.innerHTML = [
+            `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+            `   <div>${message}</div>`,
+            '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+            "</div>",
+        ].join("");
+
+        document.getElementById("alertPlaceholder").innerHTML = ''; // Clear previous alerts
+        document.getElementById("alertPlaceholder").appendChild(wrapper);
+    };
+
+    if (addButton) {
+        addButton.addEventListener("click", () => {
+            const formData = new FormData(document.getElementById("surat_tugas"));
+            fetch("tambah_surattugas.php", {
+                method: "POST",
+                body: formData,
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.status === "success") {
+                        appendAlert(data.message, "success");
+                        // Clear form after successful addition
+                        document.getElementById("surat_tugas").reset();
+                    } else {
+                        appendAlert(data.message, "danger");
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                });
+        });
+    }
+</script>
